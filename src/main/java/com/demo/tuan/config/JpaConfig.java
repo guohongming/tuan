@@ -31,7 +31,6 @@ public class JpaConfig {
                 = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);
         jpaTransactionManager.setDataSource(dataSource);
-
         return jpaTransactionManager;
     }
 
@@ -43,6 +42,7 @@ public class JpaConfig {
         localContainerEntityManagerFactoryBean.setDataSource(dataSource);
         localContainerEntityManagerFactoryBean.setPackagesToScan("com.demo.tuan.model");
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter);
+        localContainerEntityManagerFactoryBean.getJpaPropertyMap().put("hibernate.connection.autocommit",true);
         return localContainerEntityManagerFactoryBean;
     }
 

@@ -14,7 +14,6 @@ public class DatasourceConfig {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.sqlite.JDBC");
         //sqlite文件路径，可以是绝对路径也可以是相对路径
-        //jdbc:sqlite::resource:db/app.db
         dataSourceBuilder.url("jdbc:sqlite::resource:test.db");
         dataSourceBuilder.type(SQLiteDataSource.class);
         return dataSourceBuilder.build();

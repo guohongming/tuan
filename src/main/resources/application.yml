@@ -22,4 +22,14 @@ spring:
     freemarker:
       cache: false
 
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+      connection:
+        autocommit: true
+    show-sql: false
+    open-in-view: true
+
 debug: true

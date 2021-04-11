@@ -63,36 +63,22 @@
 
 <div class="container">
   <ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#" th:text="${type}"></a></li>
+    <li role="presentation" class="active"><a href="#" th:text="'我的订单'"></a></li>
 
   </ul>
-  <div class="jumbotron">
-    <div class="row" th:each="product : ${products}">
-      <div class="col-xs-4 ">
-        <a href="#" class="thumbnail">
-          <img th:src="${product.imgUrl}" alt="...">
-        </a>
+
+  <div class="row" th:each="order : ${orders}">
+    <div class="jumbotron">
+      <div class="col-xs-3 ">
+        <span style="color: #11a3fc" th:text="'订单编号：'+${order.id}"> </span><br>
       </div>
-      <div class="col-xs-6">
-        <div class="container">
-          <span style="color: #11a3fc" th:text="${product.productName}"> </span><br>
-
-          <br>
-          <span style="color: #3c763d" th:text=" '价格:￥'+${product.price}"> </span>
-          &nbsp;
-          <br>
-          <br>
-          <div>
-            <button class="success" th:onclick="|handleSubmit('${product.id}')|">下单</button>
-          </div>
-        </div>
+      <div class="col-xs-3 ">
+        <span style="color: #11a3fc" th:text="'产品名称：'+${order.productName}"> </span><br>
       </div>
-
-
-
+      <div class="col-xs-3 ">
+        <span style="color: #11a3fc" th:text="'下单时间：'+${order.createTime}"> </span><br>
+      </div>
     </div>
-
-
   </div>
 
 
@@ -144,6 +130,13 @@
       </div>
     </div>
   </footer>
+  <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        下单成功
+      </div>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
   <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
   <script src="/bootstrap/js/bootstrap.min.js"></script>

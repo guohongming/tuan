@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "product")
-public class Product{
+public class Product extends JpaRepositoriesAutoConfiguration{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
