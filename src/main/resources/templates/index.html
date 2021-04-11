@@ -33,27 +33,28 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/tag/美食?skip=0&limit=10">美食</a></li>
+                        <li><a href="/cat?type=food">美食</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/tag/酒店?skip=0&limit=10">酒店</a></li>
+                        <li><a href="/cat?type=hotel">酒店</a></li>
                         <li role="separator" class="divider"></li>
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left" method="post" action="/search">
+            <form class="navbar-form navbar-left" method="get" action="/search">
                 <div class="form-group">
-                    <input id = "data" name ="data" type="text" class="form-control" placeholder="Search">
+                    <input id = "data" name ="key" type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">您好！ {{ current_user.user_name }}</a></li>
+            <ul class="nav navbar-nav navbar-right" th:if="${userInfo} != null ">
+                <li><a href="#"><span th:text="'您好！' + ${userInfo.userName} "></span></a></li>
                 <li><a href="/order">我的订单</a></li>
-                <li><a href="/logout">退出</a></li>
+                <li><a href="/signout">退出</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">登录</a></li>
-                <li><a href="/register">注册</a></li>
+
+            <ul class="nav navbar-nav navbar-right" th:if="${userInfo} == null ">
+                <li><a href="/signin">登录</a></li>
+<!--                <li><a href="/register">注册</a></li>-->
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -104,12 +105,12 @@
     <div class="row">
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=1" title="" target="_blank" onclick="">
                     <img class="lazy" src="https://img.meituan.net/phoenix/c21c2923410205995aa308ee3169265e248982.jpg@740w_416h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥249<br><small></small></a>
+                        <a href="/detail?id=1" title="" target="_blank" onclick="">¥249<br><small></small></a>
                     </h3>
                     <p>迪士尼乐园免费接送/欧式大床房/卡通主题房等主题元素房</p>
                 </div>
@@ -118,12 +119,12 @@
 
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=2" title="" target="_blank" onclick="">
                     <img class="lazy" src="http://p1.meituan.net/iphoenix/02d5a7214cae51b3b72dbfe2dbf9f2de193140.jpg@740w_416h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥66<br><small></small></a>
+                        <a href="/detail?di=2" title="" target="_blank" onclick="">¥66<br><small></small></a>
                     </h3>
                     <p>【鑫苑·锦睌】臻享美居/地铁站/迪士尼步行5分钟/轻奢网红ins/阳光露台大床房/一室一厅//记忆枕/极米投影/情侣约会</p>
                 </div>
@@ -132,12 +133,12 @@
 
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=3" title="" target="_blank" onclick="">
                     <img class="lazy" src="https://img.meituan.net/phoenix/9cb6eb39e229bc711b42681bbe7b6ba7186461.jpg@740w_416h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥130<br><small></small></a>
+                        <a href="/detail?id=3" title="" target="_blank" onclick="">¥130<br><small></small></a>
                     </h3>
                     <p>精装一室户独卫独厨拎包即住</p>
                 </div>
@@ -146,12 +147,12 @@
 
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=4" title="" target="_blank" onclick="">
                     <img class="lazy" src="http://p0.meituan.net/iphoenix/ec41f9cd57b720b58a2dd666cd7a066a328594.jpg@740w_416h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥208<br><small></small></a>
+                        <a href="/detail?id=4" title="" target="_blank" onclick="">¥208<br><small></small></a>
                     </h3>
                     <p>免费接送迪士尼10分钟【光年】/含早餐/浦东国际机场/地铁11号线/大床可住2人</p>
                 </div>
@@ -161,12 +162,12 @@
     <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=5" title="" target="_blank" onclick="">
                     <img class="lazy" src="https://img.meituan.net/msmerchant/23c41f69c075fa1b3c2422feddbc40b7272220.jpg@220w_125h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥107<br><small></small></a>
+                        <a href="/detail?id=5" title="" target="_blank" onclick="">¥107<br><small></small></a>
                     </h3>
                     <p>重庆高老九火锅（南京东路店）</p>
                 </div>
@@ -175,12 +176,12 @@
 
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=6" title="" target="_blank" onclick="">
                     <img class="lazy" src="https://p1.meituan.net/600.600/biztone/7b282d4500aa31edda719a8af45f1c5c942558.jpg@220w_125h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥59<br><small></small></a>
+                        <a href="/detail?id=6" title="" target="_blank" onclick="">¥59<br><small></small></a>
                     </h3>
                     <p>烤友社</p>
                 </div>
@@ -188,12 +189,12 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=7" title="" target="_blank" onclick="">
                     <img class="lazy" src="https://p0.meituan.net/600.600/ugcpic/443f2c2709387cc35602ef50b5bf4b51@220w_125h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥145<br><small></small></a>
+                        <a href="/detail?id=7" title="" target="_blank" onclick="">¥145<br><small></small></a>
                     </h3>
                     <p>加洲印象海鲜</p>
                 </div>
@@ -201,12 +202,12 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/detail" title="" target="_blank" onclick="">
+                <a href="/detail?id=8" title="" target="_blank" onclick="">
                     <img class="lazy" src="https://p1.meituan.net/600.600/mogu/18c5e76a1bb79d5f4c460da90131a9a4412226.jpg@220w_125h_1e_1c" width="300" height="150" data-src="" alt="">
                 </a>
                 <div class="caption">
                     <h3>
-                        <a href="/detail" title="" target="_blank" onclick="">¥57<br><small></small></a>
+                        <a href="/detail?id=8" title="" target="_blank" onclick="">¥57<br><small></small></a>
                     </h3>
                     <p>炭香园烤肉海鲜自助餐（人民北路店）</p>
                 </div>
