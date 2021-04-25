@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Product extends JpaRepositoriesAutoConfiguration{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "product_name")
