@@ -1,6 +1,7 @@
 package com.demo.tuan.controller;
 
 import com.demo.tuan.common.CommonUtil;
+import com.demo.tuan.common.InfoExt;
 import com.demo.tuan.model.Product;
 import com.demo.tuan.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class DetailController {
         Product product = productRepository.findById(id).get();
         map.put("userInfo", commonUtil.getUserByToken(token));
         map.put("product", product);
+        map.put("ext", InfoExt.getInfos(id));
         modelAndView.addAllObjects(map);
         return modelAndView;
 

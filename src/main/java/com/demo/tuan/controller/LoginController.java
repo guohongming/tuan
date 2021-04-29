@@ -31,6 +31,13 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping("/signup")
+    public ModelAndView signup(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/signup");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/login")
     public
     String login(HttpServletResponse response, @RequestParam String username, String password){
@@ -48,6 +55,16 @@ public class LoginController {
         }else {
             return "错误";
         }
+    }
+
+    @RequestMapping(value = "/register")
+    public
+    String register(HttpServletResponse response, @RequestParam String username, String password){
+        User user = new  User();
+        user.setUserName(username);
+        user.setPassword(password);
+        userRepository.save(user);
+        return "redirect:signin";
     }
 
 }
