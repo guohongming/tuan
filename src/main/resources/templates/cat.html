@@ -70,7 +70,7 @@
   <div class="jumbotron">
     <div class="row" th:each="product : ${products}">
       <div class="col-xs-4 ">
-        <a href="#" class="thumbnail">
+        <a th:href="'/detail?id='+${product.id}" class="thumbnail">
           <img th:src="${product.imgUrl}" alt="...">
         </a>
       </div>
